@@ -4,11 +4,11 @@ import getData from "./getData";
 export default async function Forecast({
     searchParams,
   }: {
-    searchParams: { [key: string]: string | string[] | undefined };
+    searchParams: Promise<{ [key: string]: string | string }>;
   }){
     const userInput = await searchParams
-    const date = await userInput["date"]
-    const location = await userInput["location"]
+    const date = userInput["date"]
+    const location = userInput["location"]
 
     try{
     const dataResponse = await getData(date,location);
