@@ -16,18 +16,50 @@ export default async function Forecast({
     const areaName = dataResponse[0]
 
     // console.log(weatherData)
-    const quality = calculation(weatherData.hourly.cloudCover)
+    const percentage_cover_at_night = await calculation(weatherData.hourly.cloudCover)
     
 
-    return(<>
+    if (percentage_cover_at_night <25){
+          return(<>
     <div className="formDiv">
     <h1>Forecast for: {areaName}</h1>
     </div>
     <div>
-    <h1>Quality:  {quality}</h1>
+    <h1>Quality: </h1>
+    <h1 style={{color:'green'}}>Good</h1>
+    <br></br>
+    <h1> Cloud cover between 10pm and midnight: {percentage_cover_at_night}%</h1>
     </div>
       
     </>)
+    } else if(percentage_cover_at_night<50){
+                  return(<>
+    <div className="formDiv">
+    <h1>Forecast for: {areaName}</h1>
+    </div>
+    <div>
+    <h1>Quality: </h1>
+    <h1 style={{color:'yellow'}}>Moderate</h1>
+    <br></br>
+    <h1> Cloud cover between 10pm and midnight: {percentage_cover_at_night}%</h1>
+    </div>
+      
+    </>)
+    } else{
+      return(<>
+    <div className="formDiv">
+    <h1>Forecast for: {areaName}</h1>
+    </div>
+    <div>
+    <h1>Quality: </h1>
+    <h1 style={{color:'red'}}>Poor</h1>
+    <br></br>
+    <h1> Cloud cover between 10pm and midnight: {percentage_cover_at_night}%</h1>
+    </div>
+      
+    </>)
+    }
+
     }
     catch{
       return(<h1 className="formDiv">Location Not Found or Date is out of range (2 weeks) !</h1>)
