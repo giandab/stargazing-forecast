@@ -14,8 +14,6 @@ export default async function Forecast({
     const dataResponse = await getData(date,location);
     const weatherData = dataResponse[1]
     const areaName = dataResponse[0]
-
-    // console.log(weatherData)
     const percentage_cover_at_night = await calculation(weatherData.hourly.cloudCover)
     
 
