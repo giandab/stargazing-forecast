@@ -59,8 +59,8 @@ export default async function Forecast({
     }
 
     }
-    catch{
-      return(<h1 className="formDiv">Location Not Found or Date is out of range (2 weeks) !</h1>)
+    catch(e:any){
+      return(<h1 className="formDiv">Location Not Found or Date is out of range (2 weeks) !, here are some logs {e}</h1>)
     }
 
 
