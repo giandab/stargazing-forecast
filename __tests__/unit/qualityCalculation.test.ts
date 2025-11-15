@@ -6,7 +6,7 @@ const goodResponse = new  Float32Array([
     78, 78, 72,  81, 92, 59,  0, 0
   ])
 
-test('correctly identifies good forecast',async () => {
+test('correctly nighttime %age cloud cover',async () => {
     const response = await calculation(goodResponse)
-    expect(response).toBe("Good");
+    expect(response).toBe(0);
 })
