@@ -7,7 +7,7 @@ export default async function getData(date:string,location:string) {
 
     const geocoding = await fetch("https://nominatim.openstreetmap.org/search?q="+location+"&format=json")
     const data = await geocoding.json();
-    console.log("geocoding data: ",data)
+    // console.log("geocoding data: ",data)
 
     const latitude = data[0].lat
     const longtitude = data[0].lon
@@ -25,7 +25,7 @@ export default async function getData(date:string,location:string) {
     const url = "https://api.open-meteo.com/v1/forecast";
     const responses = await fetchWeatherApi(url, params);
     const response = responses[0];
-    console.log("Weather data response", response)
+    // console.log("Weather data response", response)
     const utcOffsetSeconds = response.utcOffsetSeconds();
    
     const hourly = response.hourly()!;
